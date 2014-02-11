@@ -105,10 +105,10 @@ namespace WindowsFormsApplication2
         {
             SerialPort spL = (SerialPort)sender;
             string str = null;
-            str = spL.ReadTo("\r\n");
-            str = str.Replace(" ", "");
-            str = str.Replace("\n", "");
-            str = str.Replace("\r", "");
+            str = spL.ReadTo("\r\n");   //Read until \r\n the designated EOS for the balances
+            str = str.Replace(" ", ""); //Remove all spaces
+            str = str.Replace("\n", "");//Remove all newline characters
+            str = str.Replace("\r", "");//Remove all return characters
             SetText(str);
             
         }
@@ -138,7 +138,7 @@ namespace WindowsFormsApplication2
         //  This function will take the parsed data
         //  from the scale and place it in the currently
         //  opened excel document in the currently activated
-        //  cell. It will then select the cell directly below it.
+        //  cell. 
         private void excel(double data)
         {
             //define Excel Objects
