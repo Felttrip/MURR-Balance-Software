@@ -185,9 +185,9 @@ namespace WindowsFormsApplication2
             DialogResult result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string str = richTextBox1.Text;
-                string fixedString = str.Replace("\n", "\r\n");
-                System.IO.File.WriteAllText(saveFileDialog1.FileName, fixedString);
+                string str = richTextBox1.Text;                 //copy contents of the RTB
+                string fixedString = str.Replace("\n", "\r\n"); //replace \n with \r\n for windows 
+                System.IO.File.WriteAllText(saveFileDialog1.FileName, fixedString); //write the string to the specified file
                 return;
             }
         }
