@@ -187,7 +187,7 @@ namespace WindowsFormsApplication2
             {
                 string str = richTextBox1.Text;                                       //copy contents of the RTB
                 string fixedString = str.Replace("\n", "\r\n");                       //replace \n with \r\n for windows
-                fixedString = DateTime.Now.ToShortDateString() + "\r\n" + fixedString; //add current date to string
+                fixedString = "Saved on: " + DateTime.Now.ToLongDateString() + "\r\n" + fixedString; //add current date to string
                 System.IO.File.WriteAllText(saveFileDialog1.FileName, fixedString);   //write the string to the specified file
                 File.SetAttributes(saveFileDialog1.FileName,FileAttributes.ReadOnly); //Set file as read only
                 return;
