@@ -19,16 +19,16 @@ namespace WindowsFormsApplication2
 
     public partial class Form1 : Form
     {
-        //Create a new serial port with default params
-        public SerialPort port = new SerialPort("COM1");
+
+        //Class level variables for form
         private bool flag = false;
         delegate void SetTextCallback(string text);
         Form2 customForm = new Form2();
-
-        //custom settings
        
         public Form1()
         {
+            //used for debuging
+            //Properties.Settings.Default.Reset();
             InitializeComponent();
         }
 
@@ -37,71 +37,43 @@ namespace WindowsFormsApplication2
         {
         }
 
-        //old balance radio button logic
-        //sets the values for the old balances
-        private void oldBalanceRbtn_CheckedChanged(object sender, EventArgs e)
-        {
-            port.BaudRate = 2400;
-            port.Parity = Parity.None;
-            port.DataBits = 7;
-            port.StopBits = StopBits.One;
-            port.DataReceived += port_DataReceived;
-        }
-
-        //new balance logic
-        //sets the values for the new balances
-        private void newBalanceRbtn_CheckedChanged(object sender, EventArgs e)
-        {
-            port.BaudRate = 9600;
-            port.Parity = Parity.None;
-            port.DataBits = 8;
-            port.StopBits = StopBits.One;
-            port.DataReceived += port_DataReceived;
-        }
-
-
         //runBtn_Click(object sender, EventArgs e)
         //runBtn starts up the listening on the serial port
         private void runBtn_Click(object sender, EventArgs e)
         {
-            //check flag for if button was last pressed
-            if(customRbtn.Checked)
+            try
             {
-                try 
-                {
-                    port.BaudRate = customForm.customBaud;
-                    port.DataBits = customForm.customDataBits;
-                    port.Parity = customForm.customParity;
-                    port.StopBits = customForm.customStopBits;
-                    port.DataReceived += port_DataReceived;
-                }
-                catch(ArgumentOutOfRangeException ex)
-                {
-                    MessageBox.Show("Custom values not accepted", "Error");
-                    customForm.Show();
-                }
-                
+                serialPort1.BaudRate = customForm.customBaud;
+                serialPort1.DataBits = customForm.customDataBits;
+                serialPort1.Parity = customForm.customParity;
+                serialPort1.StopBits = customForm.customStopBits;
+                serialPort1.DataReceived += serialPort1_DataReceived;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Custom values not accepted", "Error");
+                customForm.Show();
             }
             if (flag)
             {
-                port.Close();
+                serialPort1.Close();
                 flag = false;
-                if (!port.IsOpen)
+                if (!serialPort1.IsOpen)
                     checkBox1.CheckState = CheckState.Unchecked;
             }
             else
             {
-                port.Open();
+                serialPort1.Open();
                 flag = true;
-                if (port.IsOpen)
+                if (serialPort1.IsOpen)
                     checkBox1.CheckState = CheckState.Checked;
             }
-         }
+        }
 
         //port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         //This event will occur when the serial port recieves data, it will then 
         //parse the data and send it to the SetText(str) function
-        private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort spL = (SerialPort)sender;
             string str = null;
@@ -194,14 +166,10 @@ namespace WindowsFormsApplication2
             }
         }
 
-        //custom radio button for custom values
-        private void customRbtn_CheckedChanged(object sender, EventArgs e)
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(customRbtn.Checked)
-            {
-                customForm.Show();
-            }
-            
+            customForm.Show();
         }
 
         

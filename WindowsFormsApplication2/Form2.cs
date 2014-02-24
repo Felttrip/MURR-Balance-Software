@@ -17,10 +17,15 @@ namespace WindowsFormsApplication2
         public int customDataBits { get; set; }
         public Parity customParity { get; set; }
         public StopBits customStopBits { get; set; }
-    
+
         public Form2()
         {
             InitializeComponent();
+            baudRateTxtbox.Text = Properties.Settings.Default.baud_rate.ToString();
+            dataBitsTxtbox.Text = Properties.Settings.Default.data_bits.ToString();
+            stopBitsCmbBox.Text = Properties.Settings.Default.stop_bits.ToString();
+            parityCmbBox.Text = Properties.Settings.Default.parity.ToString();
+           
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -62,25 +67,23 @@ namespace WindowsFormsApplication2
             switch(stopBitsCmbBox.SelectedIndex)
             {
                 case 0:
-                    customStopBits = StopBits.None;
-                    break;
-                case 1:
                     customStopBits = StopBits.One;
                     break;
-                case 2:
+                case 1:
                     customStopBits = StopBits.OnePointFive;
                     break;
-                case 3:
+                case 2:
                     customStopBits = StopBits.Two;
                     break;
                 default:
-                    customStopBits = StopBits.None;
+                    customStopBits = StopBits.One;
                     break;
-
-
             }
+           
+            
             if(!flag)
             {
+                save_settings();
                 this.Hide();
             }
             
@@ -89,6 +92,15 @@ namespace WindowsFormsApplication2
         private void cancel_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void save_settings()
+        {
+            Properties.Settings.Default.baud_rate = customBaud;
+            Properties.Settings.Default.data_bits = customDataBits;
+            Properties.Settings.Default.stop_bits = customStopBits;
+            Properties.Settings.Default.parity = customParity;
+            Properties.Settings.Default.Save();
         }
 
         

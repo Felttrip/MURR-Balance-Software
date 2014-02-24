@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.baudRateTxtbox = new System.Windows.Forms.TextBox();
             this.parityCmbBox = new System.Windows.Forms.ComboBox();
-            this.dataBitsTxtbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,14 +36,9 @@
             this.save = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.stopBitsCmbBox = new System.Windows.Forms.ComboBox();
+            this.dataBitsTxtbox = new System.Windows.Forms.TextBox();
+            this.baudRateTxtbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // baudRateTxtbox
-            // 
-            this.baudRateTxtbox.Location = new System.Drawing.Point(76, 6);
-            this.baudRateTxtbox.Name = "baudRateTxtbox";
-            this.baudRateTxtbox.Size = new System.Drawing.Size(100, 20);
-            this.baudRateTxtbox.TabIndex = 0;
             // 
             // parityCmbBox
             // 
@@ -60,13 +53,6 @@
             this.parityCmbBox.Name = "parityCmbBox";
             this.parityCmbBox.Size = new System.Drawing.Size(100, 21);
             this.parityCmbBox.TabIndex = 1;
-            // 
-            // dataBitsTxtbox
-            // 
-            this.dataBitsTxtbox.Location = new System.Drawing.Point(76, 32);
-            this.dataBitsTxtbox.Name = "dataBitsTxtbox";
-            this.dataBitsTxtbox.Size = new System.Drawing.Size(100, 20);
-            this.dataBitsTxtbox.TabIndex = 2;
             // 
             // label1
             // 
@@ -126,9 +112,9 @@
             // 
             // stopBitsCmbBox
             // 
+            this.stopBitsCmbBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApplication2.Properties.Settings.Default, "StopBits", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.stopBitsCmbBox.FormattingEnabled = true;
             this.stopBitsCmbBox.Items.AddRange(new object[] {
-            "None",
             "1",
             "1.5",
             "2"});
@@ -136,6 +122,25 @@
             this.stopBitsCmbBox.Name = "stopBitsCmbBox";
             this.stopBitsCmbBox.Size = new System.Drawing.Size(100, 21);
             this.stopBitsCmbBox.TabIndex = 10;
+            this.stopBitsCmbBox.Text = global::WindowsFormsApplication2.Properties.Settings.Default.StopBits;
+            // 
+            // dataBitsTxtbox
+            // 
+            this.dataBitsTxtbox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApplication2.Properties.Settings.Default, "DataBits", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dataBitsTxtbox.Location = new System.Drawing.Point(76, 32);
+            this.dataBitsTxtbox.Name = "dataBitsTxtbox";
+            this.dataBitsTxtbox.Size = new System.Drawing.Size(100, 20);
+            this.dataBitsTxtbox.TabIndex = 2;
+            this.dataBitsTxtbox.Text = global::WindowsFormsApplication2.Properties.Settings.Default.DataBits;
+            // 
+            // baudRateTxtbox
+            // 
+            this.baudRateTxtbox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApplication2.Properties.Settings.Default, "baudRate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.baudRateTxtbox.Location = new System.Drawing.Point(76, 6);
+            this.baudRateTxtbox.Name = "baudRateTxtbox";
+            this.baudRateTxtbox.Size = new System.Drawing.Size(100, 20);
+            this.baudRateTxtbox.TabIndex = 0;
+            this.baudRateTxtbox.Text = global::WindowsFormsApplication2.Properties.Settings.Default.baudRate;
             // 
             // Form2
             // 
