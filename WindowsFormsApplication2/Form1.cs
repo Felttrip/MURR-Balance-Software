@@ -48,11 +48,14 @@ namespace WindowsFormsApplication2
                 serialPort1.Parity = customForm.customParity;
                 serialPort1.StopBits = customForm.customStopBits;
                 serialPort1.DataReceived += serialPort1_DataReceived;
+                
+
             }
             catch (ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show("Custom values not accepted", "Error");
                 customForm.Show();
+                flag = true;
             }
             if (flag)
             {
