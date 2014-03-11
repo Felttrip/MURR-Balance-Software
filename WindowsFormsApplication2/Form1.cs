@@ -43,17 +43,17 @@ namespace WindowsFormsApplication2
         {
             try
             {
-                serialPort1.BaudRate = customForm.customBaud;
-                serialPort1.DataBits = customForm.customDataBits;
-                serialPort1.Parity = customForm.customParity;
-                serialPort1.StopBits = customForm.customStopBits;
+                serialPort1.BaudRate = Properties.Settings.Default.baud_rate;
+                serialPort1.DataBits = Properties.Settings.Default.data_bits;
+                serialPort1.Parity = Properties.Settings.Default.parity;
+                serialPort1.StopBits = Properties.Settings.Default.stop_bits;
                 serialPort1.DataReceived += serialPort1_DataReceived;
                 
 
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                MessageBox.Show("Custom values not accepted", "Error");
+                MessageBox.Show("Configuration not accepted.", "Error");
                 customForm.Show();
                 flag = true;
             }
@@ -78,14 +78,20 @@ namespace WindowsFormsApplication2
         //parse the data and send it to the SetText(str) function
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            SerialPort spL = (SerialPort)sender;
-            string str = null;
-            str = spL.ReadTo("\r\n");   //Read until \r\n the designated EOS for the balances
-            str = str.Replace(" ", ""); //Remove all spaces
-            str = str.Replace("\n", "");//Remove all newline characters
-            str = str.Replace("\r", "");//Remove all return characters
-            SetText(str);
-            
+            try
+            {
+                SerialPort spL = (SerialPort)sender;
+                string str = null;
+                str = spL.ReadTo("\r\n");   //Read until \r\n the designated EOS for the balances
+                str = str.Replace(" ", ""); //Remove all spaces
+                str = str.Replace("\n", "");//Remove all newline characters
+                str = str.Replace("\r", "");//Remove all return characters
+                SetText(str);
+            }
+            catch(System.IO.IOException ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
         }
 
 
