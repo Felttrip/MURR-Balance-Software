@@ -133,14 +133,30 @@ namespace WindowsFormsApplication2
             {
                 xlApp = new Excel.Application();
             }
-
-            //grab active worksheet and active cell
-            activeWorksheet = (Excel.Worksheet)xlApp.ActiveWorkbook.ActiveSheet;
-            activeCell = (Excel.Range)xlApp.Application.ActiveCell;
-
-            //input data in cell
-            activeCell.Value2 = data;
-
+            if (xlApp == null)
+            {
+                MessageBox.Show("excel error 1", "Error");
+                xlApp = new Excel.Application();
+                
+            }
+            else
+            {
+                MessageBox.Show(xlApp.ToString(), "Error");
+            }
+            xlApp.ActiveWindow.Activate();
+            if (activeWorksheet != null)
+            {
+                //grab active worksheet and active cell
+                activeWorksheet = (Excel.Worksheet)xlApp.ActiveWorkbook.ActiveSheet;
+                activeCell = (Excel.Range)xlApp.Application.ActiveCell;
+            }
+            else
+            {
+                MessageBox.Show("excel error 3", "Error");
+            }
+                //input data in cell
+                activeCell.Value2 = data;
+       
 
             //THIS CODE WOULD ALLOW THE PROGRAM TO CHANGE CELLS
             //BUT WAS DETERMINED TO BE UNNECESSARY
