@@ -57,17 +57,15 @@ namespace WindowsFormsApplication2
                 customForm.Show();
                 flag = true;
             }
-            if (flag)
+            if (serialPort1.IsOpen)
             {
                 serialPort1.Close();
-                flag = false;
                 if (!serialPort1.IsOpen)
                     checkBox1.CheckState = CheckState.Unchecked;
             }
             else
             {
                 serialPort1.Open();
-                flag = true;
                 if (serialPort1.IsOpen)
                     checkBox1.CheckState = CheckState.Checked;
             }
