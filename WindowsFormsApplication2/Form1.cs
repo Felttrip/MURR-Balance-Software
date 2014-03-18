@@ -41,7 +41,7 @@ namespace WindowsFormsApplication2
         //runBtn starts up the listening on the serial port
         private void runBtn_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 serialPort1.BaudRate = Properties.Settings.Default.baud_rate;
                 serialPort1.DataBits = Properties.Settings.Default.data_bits;
@@ -68,6 +68,11 @@ namespace WindowsFormsApplication2
                 serialPort1.Open();
                 if (serialPort1.IsOpen)
                     checkBox1.CheckState = CheckState.Checked;
+            }*/
+            int i;
+            for(i=0;i<10;i++)
+            {
+                excel(i);
             }
         }
 
@@ -137,7 +142,7 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("excel error 1", "Error");
                 xlApp = new Excel.Application();
-                
+
             }
             else
             {
@@ -154,19 +159,22 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("excel error 3", "Error");
             }
-                //input data in cell
-                activeCell.Value2 = data;
-       
+            //input data in cell
+            activeCell.Value2 = data;
+
 
             //THIS CODE WOULD ALLOW THE PROGRAM TO CHANGE CELLS
             //BUT WAS DETERMINED TO BE UNNECESSARY
 
-                //Change currently selected cell
-                /*column = activeCell.Column;
-                row = activeCell.Row;
-                activeCell = (Excel.Range)activeWorksheet.Cells[row + 1, column];
-                activeCell.Select();*/
+            //Change currently selected cell
+            int column;
+            int row;
+            column = activeCell.Column;
+            row = activeCell.Row;
+            activeCell = (Excel.Range)activeWorksheet.Cells[row + 1, column];
+            activeCell.Select();
         }
+       
 
         //saveBtn_Click(object sender, EventArgs e)
         //This function will begin the save dialog process 
