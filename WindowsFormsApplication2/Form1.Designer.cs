@@ -39,6 +39,7 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.excel_CheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,11 +140,23 @@
             this.serialPort1.PortName = global::WindowsFormsApplication2.Properties.Settings.Default.port_name;
             this.serialPort1.StopBits = global::WindowsFormsApplication2.Properties.Settings.Default.stop_bits;
             // 
+            // excel_CheckBox
+            // 
+            this.excel_CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.excel_CheckBox.AutoSize = true;
+            this.excel_CheckBox.Location = new System.Drawing.Point(93, 380);
+            this.excel_CheckBox.Name = "excel_CheckBox";
+            this.excel_CheckBox.Size = new System.Drawing.Size(81, 17);
+            this.excel_CheckBox.TabIndex = 17;
+            this.excel_CheckBox.Text = "Open Excel";
+            this.excel_CheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 411);
+            this.Controls.Add(this.excel_CheckBox);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.runBtn);
@@ -174,6 +187,7 @@
         private System.Windows.Forms.ToolStripMenuItem setUpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.CheckBox excel_CheckBox;
 
     }
 }

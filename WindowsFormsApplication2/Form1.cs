@@ -21,9 +21,12 @@ namespace WindowsFormsApplication2
     {
 
         //Class level variables for form
-        private bool flag = false;
         delegate void SetTextCallback(string text);
         Form2 customForm = new Form2();
+        Excel.Workbook xlwkbook;
+        Excel.Worksheet xlsheet;
+        Excel.Application xlApp;
+        bool flag = false;
        
         public Form1()
         {
@@ -41,7 +44,8 @@ namespace WindowsFormsApplication2
         //runBtn starts up the listening on the serial port
         private void runBtn_Click(object sender, EventArgs e)
         {
-            /*try
+            //Start up serial port connection
+            try
             {
                 serialPort1.BaudRate = Properties.Settings.Default.baud_rate;
                 serialPort1.DataBits = Properties.Settings.Default.data_bits;
@@ -68,11 +72,36 @@ namespace WindowsFormsApplication2
                 serialPort1.Open();
                 if (serialPort1.IsOpen)
                     checkBox1.CheckState = CheckState.Checked;
-            }*/
-            int i;
-            for(i=0;i<10;i++)
+            }
+            if(excel_CheckBox.Checked && checkBox1.Checked)
             {
-                excel(i);
+                
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Filter = "Excel File|*.*";
+                openFileDialog1.Title = "Save an Excel File";
+                DialogResult result = openFileDialog1.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        string xlFileName = openFileDialog1.FileName;
+                        xlwkbook = (Excel.Workbook)System.Runtime.InteropServices.Marshal.BindToMoniker(xlFileName);
+                        string sFile = xlFileName.Substring(xlFileName.LastIndexOf("\\") + 1);
+                        xlwkbook.Application.Windows[sFile].Visible = true;
+                        xlwkbook.Application.Visible = true;
+                        xlsheet = (Excel.Worksheet)xlwkbook.ActiveSheet;
+                        xlsheet.Visible = Excel.XlSheetVisibility.xlSheetVisible;
+                    }
+                    catch ( System.InvalidCastException ex)
+                    {
+                        MessageBox.Show("Please try again and select a valid Excel file.\n","Error");
+                    }
+                }
+            }
+            if(excel_CheckBox.Checked && !checkBox1.Checked)
+            {
+                xlwkbook = null;
+                xlsheet = null;	
             }
         }
 
@@ -101,7 +130,7 @@ namespace WindowsFormsApplication2
         //SetText(string text)
         //This function handles moving the text collected from
         //the balance's thread and passes it to the richTextBox1 thread
-        //and sned the data to the excel function
+        //and send the data to the excel function
         private void SetText(string text)
         {
             if (richTextBox1.InvokeRequired)
@@ -113,7 +142,11 @@ namespace WindowsFormsApplication2
             {
                 richTextBox1.Text += text + "\r\n";
                 string rawNum = text.Replace("g", "");
-                excel(Convert.ToDouble(rawNum));
+                if(excel_CheckBox.Checked)
+                {
+                    excel(Convert.ToDouble(rawNum));
+                }
+                
             }
 
 
@@ -125,54 +158,31 @@ namespace WindowsFormsApplication2
         //  cell. 
         private void excel(double data)
         {
-            //define Excel Objects
-            Excel.Application xlApp = null;
-            Excel.Worksheet activeWorksheet = null;
-            Excel.Range activeCell = null;
 
             try //attempt to open current excel doc
             {
                 xlApp = (Excel.Application)System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application");
+                xlApp.ActiveCell.Value2 = data;
+                //THIS CODE WOULD ALLOW THE PROGRAM TO CHANGE CELLS
+                //BUT WAS DETERMINED TO BE UNNECESSARY
+
+                //Change currently selected cell
+                /*int column;
+                int row;
+                column = activeCell.Column;
+                row = activeCell.Row;
+                activeCell = (Excel.Range)activeWorksheet.Cells[row + 1, column];
+                activeCell.Select();*/
+
             }
             catch (System.Runtime.InteropServices.COMException ex) //if excel doc is not open then open a doc
             {
-                xlApp = new Excel.Application();
-            }
-            if (xlApp == null)
-            {
-                MessageBox.Show("excel error 1", "Error");
-                xlApp = new Excel.Application();
 
             }
-            else
+            catch(System.NullReferenceException ex)
             {
-                MessageBox.Show(xlApp.ToString(), "Error");
+                MessageBox.Show("Data failed to send to Excel.\n Uncheck the \"Open Excel\" box, or open a new Excel document", "Error");   
             }
-            xlApp.ActiveWindow.Activate();
-            if (activeWorksheet != null)
-            {
-                //grab active worksheet and active cell
-                activeWorksheet = (Excel.Worksheet)xlApp.ActiveWorkbook.ActiveSheet;
-                activeCell = (Excel.Range)xlApp.Application.ActiveCell;
-            }
-            else
-            {
-                MessageBox.Show("excel error 3", "Error");
-            }
-            //input data in cell
-            activeCell.Value2 = data;
-
-
-            //THIS CODE WOULD ALLOW THE PROGRAM TO CHANGE CELLS
-            //BUT WAS DETERMINED TO BE UNNECESSARY
-
-            //Change currently selected cell
-            int column;
-            int row;
-            column = activeCell.Column;
-            row = activeCell.Row;
-            activeCell = (Excel.Range)activeWorksheet.Cells[row + 1, column];
-            activeCell.Select();
         }
        
 
