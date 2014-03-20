@@ -192,7 +192,8 @@ namespace WindowsFormsApplication2
         private void saveBtn_Click(object sender, EventArgs e)
         {
             // Displays a SaveFileDialog so the user can save the text
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            excel(1);
+            /*SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Text Files (*.txt)|*.txt";
             saveFileDialog1.Title = "Save a text File";
             DialogResult result = saveFileDialog1.ShowDialog();
@@ -204,7 +205,7 @@ namespace WindowsFormsApplication2
                 System.IO.File.WriteAllText(saveFileDialog1.FileName, fixedString);   //write the string to the specified file
                 File.SetAttributes(saveFileDialog1.FileName,FileAttributes.ReadOnly); //Set file as read only
                 return;
-            }
+            }*/
         }
 
 
