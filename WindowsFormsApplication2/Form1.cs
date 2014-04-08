@@ -16,10 +16,11 @@ using Microsoft.VisualBasic;
 
 namespace WindowsFormsApplication2
 {
+    
 
     public partial class Form1 : Form
     {
-
+        
         //Class level variables for form
         delegate void SetTextCallback(string text);
         Form2 customForm = new Form2();
@@ -33,6 +34,10 @@ namespace WindowsFormsApplication2
             //used for debuging
             //Properties.Settings.Default.Reset();
             InitializeComponent();
+            foreach (string s in SerialPort.GetPortNames())
+            {
+                richTextBox1.Text = s + "\n";
+            } 
         }
 
         //load the form initialy
@@ -45,30 +50,17 @@ namespace WindowsFormsApplication2
         private void runBtn_Click(object sender, EventArgs e)
         {
             //Start up serial port connection
-            try
-            {
-                serialPort1.BaudRate = Properties.Settings.Default.baud_rate;
-                serialPort1.DataBits = Properties.Settings.Default.data_bits;
-                serialPort1.Parity = Properties.Settings.Default.parity;
-                serialPort1.StopBits = Properties.Settings.Default.stop_bits;
-                serialPort1.DataReceived += serialPort1_DataReceived;
-                
-
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                MessageBox.Show("Configuration not accepted.", "Error");
-                customForm.Show();
-                flag = true;
-            }
+            
             if (serialPort1.IsOpen)
             {
                 serialPort1.Close();
+                serialPort1.Dispose();
                 if (!serialPort1.IsOpen)
                     checkBox1.CheckState = CheckState.Unchecked;
             }
             else
             {
+                connectToCOM();
                 serialPort1.Open();
                 if (serialPort1.IsOpen)
                     checkBox1.CheckState = CheckState.Checked;
@@ -78,7 +70,7 @@ namespace WindowsFormsApplication2
                 
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 openFileDialog1.Filter = "Excel File|*.*";
-                openFileDialog1.Title = "Save an Excel File";
+                openFileDialog1.Title = "Open an Excel File";
                 DialogResult result = openFileDialog1.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -92,10 +84,15 @@ namespace WindowsFormsApplication2
                         xlsheet = (Excel.Worksheet)xlwkbook.ActiveSheet;
                         xlsheet.Visible = Excel.XlSheetVisibility.xlSheetVisible;
                     }
+                    catch ( System.ArgumentException ex)
+                    {
+                        MessageBox.Show("Please try again and select a valid Excel file.\n","Error");
+                    }
                     catch ( System.InvalidCastException ex)
                     {
                         MessageBox.Show("Please try again and select a valid Excel file.\n","Error");
                     }
+                    
                 }
             }
             if(excel_CheckBox.Checked && !checkBox1.Checked)
@@ -192,8 +189,7 @@ namespace WindowsFormsApplication2
         private void saveBtn_Click(object sender, EventArgs e)
         {
             // Displays a SaveFileDialog so the user can save the text
-            excel(1);
-            /*SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Text Files (*.txt)|*.txt";
             saveFileDialog1.Title = "Save a text File";
             DialogResult result = saveFileDialog1.ShowDialog();
@@ -205,13 +201,33 @@ namespace WindowsFormsApplication2
                 System.IO.File.WriteAllText(saveFileDialog1.FileName, fixedString);   //write the string to the specified file
                 File.SetAttributes(saveFileDialog1.FileName,FileAttributes.ReadOnly); //Set file as read only
                 return;
-            }*/
+            }
         }
 
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             customForm.Show();
+        }
+
+        //Connecting to COM function
+        private void connectToCOM()
+        {
+            try
+            {
+                serialPort1.PortName = Properties.Settings.Default.port_name;
+                serialPort1.BaudRate = Properties.Settings.Default.baud_rate;
+                serialPort1.DataBits = Properties.Settings.Default.data_bits;
+                serialPort1.Parity = Properties.Settings.Default.parity;
+                serialPort1.StopBits = Properties.Settings.Default.stop_bits;
+                serialPort1.DataReceived += serialPort1_DataReceived;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Configuration not accepted.", "Error");
+                customForm.Show();
+                serialPort1.Dispose();
+            }
         }
 
         

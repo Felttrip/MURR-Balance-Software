@@ -13,6 +13,7 @@ namespace WindowsFormsApplication2
 {
     public partial class Form2 : Form
     {
+        public string customPort { get; set; }
         public int customBaud { get; set; }
         public int customDataBits { get; set; }
         public Parity customParity { get; set; }
@@ -21,6 +22,7 @@ namespace WindowsFormsApplication2
         public Form2()
         {
             InitializeComponent();
+            comPortTxtBox.Text = Properties.Settings.Default.port_name;
             baudRateTxtbox.Text = Properties.Settings.Default.baud_rate.ToString();
             dataBitsTxtbox.Text = Properties.Settings.Default.data_bits.ToString();
             stopBitsCmbBox.Text = Properties.Settings.Default.stop_bits.ToString();
@@ -31,6 +33,7 @@ namespace WindowsFormsApplication2
         private void save_Click(object sender, EventArgs e)
         {
             bool flag = false;
+            customPort = comPortTxtBox.Text;
             try
             {
                 customBaud = Convert.ToInt32(baudRateTxtbox.Text);
@@ -96,13 +99,12 @@ namespace WindowsFormsApplication2
 
         private void save_settings()
         {
+            Properties.Settings.Default.port_name = customPort;
             Properties.Settings.Default.baud_rate = customBaud;
             Properties.Settings.Default.data_bits = customDataBits;
             Properties.Settings.Default.stop_bits = customStopBits;
             Properties.Settings.Default.parity = customParity;
             Properties.Settings.Default.Save();
         }
-
-        
     }
 }

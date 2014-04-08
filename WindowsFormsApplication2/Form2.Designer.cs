@@ -38,6 +38,8 @@
             this.stopBitsCmbBox = new System.Windows.Forms.ComboBox();
             this.dataBitsTxtbox = new System.Windows.Forms.TextBox();
             this.baudRateTxtbox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comPortTxtBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // parityCmbBox
@@ -49,7 +51,7 @@
             "Space",
             "Mark",
             "None"});
-            this.parityCmbBox.Location = new System.Drawing.Point(76, 84);
+            this.parityCmbBox.Location = new System.Drawing.Point(68, 110);
             this.parityCmbBox.Name = "parityCmbBox";
             this.parityCmbBox.Size = new System.Drawing.Size(100, 21);
             this.parityCmbBox.TabIndex = 1;
@@ -57,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(4, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 4;
@@ -66,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 35);
+            this.label2.Location = new System.Drawing.Point(4, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 5;
@@ -75,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 61);
+            this.label3.Location = new System.Drawing.Point(4, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 6;
@@ -84,7 +86,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 87);
+            this.label4.Location = new System.Drawing.Point(4, 113);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 7;
@@ -92,7 +94,7 @@
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(12, 132);
+            this.save.Location = new System.Drawing.Point(12, 161);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(75, 23);
             this.save.TabIndex = 8;
@@ -102,7 +104,7 @@
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(160, 132);
+            this.cancel.Location = new System.Drawing.Point(160, 161);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 9;
@@ -118,7 +120,7 @@
             "1",
             "1.5",
             "2"});
-            this.stopBitsCmbBox.Location = new System.Drawing.Point(76, 57);
+            this.stopBitsCmbBox.Location = new System.Drawing.Point(68, 83);
             this.stopBitsCmbBox.Name = "stopBitsCmbBox";
             this.stopBitsCmbBox.Size = new System.Drawing.Size(100, 21);
             this.stopBitsCmbBox.TabIndex = 10;
@@ -127,7 +129,7 @@
             // dataBitsTxtbox
             // 
             this.dataBitsTxtbox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApplication2.Properties.Settings.Default, "DataBits", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.dataBitsTxtbox.Location = new System.Drawing.Point(76, 32);
+            this.dataBitsTxtbox.Location = new System.Drawing.Point(68, 58);
             this.dataBitsTxtbox.Name = "dataBitsTxtbox";
             this.dataBitsTxtbox.Size = new System.Drawing.Size(100, 20);
             this.dataBitsTxtbox.TabIndex = 2;
@@ -136,17 +138,35 @@
             // baudRateTxtbox
             // 
             this.baudRateTxtbox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApplication2.Properties.Settings.Default, "baudRate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.baudRateTxtbox.Location = new System.Drawing.Point(76, 6);
+            this.baudRateTxtbox.Location = new System.Drawing.Point(68, 32);
             this.baudRateTxtbox.Name = "baudRateTxtbox";
             this.baudRateTxtbox.Size = new System.Drawing.Size(100, 20);
             this.baudRateTxtbox.TabIndex = 0;
             this.baudRateTxtbox.Text = global::WindowsFormsApplication2.Properties.Settings.Default.baudRate;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Com Port";
+            // 
+            // comPortTxtBox
+            // 
+            this.comPortTxtBox.Location = new System.Drawing.Point(68, 6);
+            this.comPortTxtBox.Name = "comPortTxtBox";
+            this.comPortTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.comPortTxtBox.TabIndex = 12;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(247, 167);
+            this.ClientSize = new System.Drawing.Size(247, 196);
+            this.Controls.Add(this.comPortTxtBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.stopBitsCmbBox);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.save);
@@ -176,5 +196,7 @@
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.ComboBox stopBitsCmbBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox comPortTxtBox;
     }
 }

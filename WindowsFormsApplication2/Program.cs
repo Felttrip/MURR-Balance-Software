@@ -14,6 +14,8 @@ namespace WindowsFormsApplication2
         [STAThread]
         static void Main()
         {
+            //suppresses windows default exception handler so the implemented try catch statements will work
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
