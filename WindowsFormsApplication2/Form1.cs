@@ -27,17 +27,13 @@ namespace WindowsFormsApplication2
         Excel.Workbook xlwkbook;
         Excel.Worksheet xlsheet;
         Excel.Application xlApp;
-        bool flag = false;
        
         public Form1()
         {
             //used for debuging
             //Properties.Settings.Default.Reset();
             InitializeComponent();
-            foreach (string s in SerialPort.GetPortNames())
-            {
-                richTextBox1.Text = s + "\n";
-            } 
+             
         }
 
         //load the form initialy
@@ -228,6 +224,11 @@ namespace WindowsFormsApplication2
                 customForm.Show();
                 serialPort1.Dispose();
             }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Murr Balance Software is distributed under the GNU General Public License.", "About Murr Balance Software");
         }
 
         
