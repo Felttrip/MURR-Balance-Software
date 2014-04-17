@@ -39,7 +39,7 @@
             this.dataBitsTxtbox = new System.Windows.Forms.TextBox();
             this.baudRateTxtbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comPortTxtBox = new System.Windows.Forms.TextBox();
+            this.portNameCmbBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // parityCmbBox
@@ -153,19 +153,21 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Com Port";
             // 
-            // comPortTxtBox
+            // portNameCmbBox
             // 
-            this.comPortTxtBox.Location = new System.Drawing.Point(68, 6);
-            this.comPortTxtBox.Name = "comPortTxtBox";
-            this.comPortTxtBox.Size = new System.Drawing.Size(100, 20);
-            this.comPortTxtBox.TabIndex = 12;
+            this.portNameCmbBox.FormattingEnabled = true;
+            this.portNameCmbBox.Location = new System.Drawing.Point(68, 6);
+            this.portNameCmbBox.Name = "portNameCmbBox";
+            this.portNameCmbBox.Size = new System.Drawing.Size(100, 21);
+            this.portNameCmbBox.TabIndex = 12;
+            this.portNameCmbBox.SelectedIndexChanged += new System.EventHandler(this.portNameCmbBox_SelectedIndexChanged);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(247, 196);
-            this.Controls.Add(this.comPortTxtBox);
+            this.Controls.Add(this.portNameCmbBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.stopBitsCmbBox);
             this.Controls.Add(this.cancel);
@@ -197,6 +199,6 @@
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.ComboBox stopBitsCmbBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox comPortTxtBox;
+        private System.Windows.Forms.ComboBox portNameCmbBox;
     }
 }

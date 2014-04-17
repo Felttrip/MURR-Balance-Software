@@ -33,6 +33,7 @@ namespace WindowsFormsApplication2
             //used for debuging
             //Properties.Settings.Default.Reset();
             InitializeComponent();
+          
              
         }
 
@@ -88,6 +89,10 @@ namespace WindowsFormsApplication2
                     {
                         MessageBox.Show("Please try again and select a valid Excel file.\n","Error");
                     }
+                    catch(System.Runtime.InteropServices.COMException ex)
+                    {
+                        MessageBox.Show("Please try again and select a valid Excel file.\n", "Error");
+                    }
                     
                 }
             }
@@ -107,7 +112,7 @@ namespace WindowsFormsApplication2
             {
                 SerialPort spL = (SerialPort)sender;
                 string str = null;
-                str = spL.ReadTo("\r\n");   //Read until \r\n the designated EOS for the balances
+                str = spL.ReadLine();       //Read until \r\n the designated EOS for the balances
                 str = str.Replace(" ", ""); //Remove all spaces
                 str = str.Replace("\n", "");//Remove all newline characters
                 str = str.Replace("\r", "");//Remove all return characters

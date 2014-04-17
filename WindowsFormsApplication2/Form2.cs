@@ -21,19 +21,35 @@ namespace WindowsFormsApplication2
 
         public Form2()
         {
+
             InitializeComponent();
-            comPortTxtBox.Text = Properties.Settings.Default.port_name;
+            string[] ports = SerialPort.GetPortNames();
+            int i = 0;
+            int index=0;
+            foreach (string port in ports)
+            {
+                portNameCmbBox.Items.Add(port);
+                if(port == Properties.Settings.Default.port_name)
+                {
+                    index = i;
+                }
+                i++;
+            }
+            portNameCmbBox.SelectedIndex = index;
             baudRateTxtbox.Text = Properties.Settings.Default.baud_rate.ToString();
             dataBitsTxtbox.Text = Properties.Settings.Default.data_bits.ToString();
             stopBitsCmbBox.Text = Properties.Settings.Default.stop_bits.ToString();
             parityCmbBox.Text = Properties.Settings.Default.parity.ToString();
+
+          
            
         }
 
         private void save_Click(object sender, EventArgs e)
         {
             bool flag = false;
-            customPort = comPortTxtBox.Text;
+            portNameCmbBox.Focus();
+            customPort = portNameCmbBox.SelectedText;
             try
             {
                 customBaud = Convert.ToInt32(baudRateTxtbox.Text);
@@ -89,7 +105,6 @@ namespace WindowsFormsApplication2
                 save_settings();
                 this.Hide();
             }
-            
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -106,5 +121,11 @@ namespace WindowsFormsApplication2
             Properties.Settings.Default.parity = customParity;
             Properties.Settings.Default.Save();
         }
+
+        private void portNameCmbBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
