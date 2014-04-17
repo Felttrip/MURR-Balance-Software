@@ -3451,8 +3451,9 @@
 		<row><td>IDS_PROGMSG_XML_UPDATE_FILE</td><td>1033</td><td>Updating XML file %s...</td><td>0</td><td/><td>-1977447155</td></row>
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>-1977447155</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>-1977447155</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1977437778</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1977435984</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>Murr Balance Software</td><td>0</td><td/><td>-1977451824</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>Murr Balance Software</td><td>0</td><td/><td>-1977451824</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1977482512</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>-1977447155</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>-1977447155</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>-1977447155</td></row>
@@ -3744,6 +3745,7 @@
 		<row><td>ID_STRING1</td><td>1033</td><td>http://www.MURR.com</td><td>0</td><td/><td>-1977456464</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>MURR</td><td>0</td><td/><td>-1977456464</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1977446224</td></row>
+		<row><td>ID_STRING4</td><td>1033</td><td>Murr Balance Software</td><td>0</td><td/><td>-1977476368</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1977447155</td></row>
 	</table>
 
@@ -3984,7 +3986,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{D0FCDCEA-D3C8-4BE6-83B7-47B466BDCF75}</td></row>
 		<row><td>ISUSSignature</td><td>{66392CF4-2594-4F75-8074-9ED56035AB3E}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4438,7 +4440,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>FileKey1</td><td>Murr_Balance_Software.Primary_output</td><td/><td>murr</td><td>2</td></row>
 		<row><td>FileKey2</td><td>Murr_Balance_Software.Primary_output</td><td/><td>murrba_1_murr_balance_software</td><td>2</td></row>
 		<row><td>_Built</td><td>Murr_Balance_Software.Primary_output</td><td/><td>murrba_1_murr_balance_software</td><td>2</td></row>
-		<row><td>_Built2</td><td>Murr_Balance_Software.Primary_output</td><td/><td>murrba_1_murr_balance_software</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4525,8 +4526,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
 		<row><td>_Built</td><td>murrba_1_murr_balance_software</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>Murr_Balance_Software.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>Murr_Balance_Software.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built2</td><td>murrba_1_murr_balance_software</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>Murr_Balance_Software.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built2</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>Murr_Balance_Software.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
