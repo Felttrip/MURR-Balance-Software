@@ -32,9 +32,8 @@ namespace WindowsFormsApplication2
         {
             //used for debuging
             //Properties.Settings.Default.Reset();
+
             InitializeComponent();
-          
-             
         }
 
         //load the form initialy
@@ -138,16 +137,20 @@ namespace WindowsFormsApplication2
             }
             else
             {
+                //add text to text box
                 richTextBox1.Text += text + "\r\n";
-                string rawNum = text.Replace("g", "");
+                
+                //keep bottom of text box in focus
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                richTextBox1.ScrollToCaret();
+
+                //add to excel doc
                 if(excel_CheckBox.Checked)
                 {
+                    string rawNum = text.Replace("g", "");
                     excel(Convert.ToDouble(rawNum));
-                }
-                
+                } 
             }
-
-
         }
         //  excel(double data)
         //  This function will take the parsed data
@@ -206,12 +209,9 @@ namespace WindowsFormsApplication2
         }
 
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            customForm.Show();
-        }
 
         //Connecting to COM function
+        //sets all of the values to start a COM port connection
         private void connectToCOM()
         {
             try
@@ -231,11 +231,17 @@ namespace WindowsFormsApplication2
             }
         }
 
+        //About toolstrip
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Murr Balance Software is distributed under the GNU General Public License.", "About Murr Balance Software");
         }
 
+        //file->settings toolstrip
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            customForm.Show();
+        }
         
 
     }
