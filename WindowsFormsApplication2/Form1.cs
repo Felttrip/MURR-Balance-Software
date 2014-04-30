@@ -168,12 +168,15 @@ namespace WindowsFormsApplication2
                 //BUT WAS DETERMINED TO BE UNNECESSARY
 
                 //Change currently selected cell
-                /*int column;
-                int row;
-                column = activeCell.Column;
-                row = activeCell.Row;
-                activeCell = (Excel.Range)activeWorksheet.Cells[row + 1, column];
-                activeCell.Select();*/
+
+                Excel.Range activeCell = xlApp.ActiveCell;
+                int column = activeCell.Column;
+                int row = activeCell.Row;
+                if (true/*down.selevted*/)
+                    activeCell = (Excel.Range)xlApp.ActiveSheet.Cells[row + 1, column];
+                if (true/*acrose selected*/)
+                    activeCell = (Excel.Range)xlApp.ActiveSheet.Cells[row, column + 1];
+                activeCell.Select();
 
             }
             catch (System.Runtime.InteropServices.COMException ex) //if excel doc is not open then open a doc
