@@ -164,18 +164,15 @@ namespace WindowsFormsApplication2
             {
                 xlApp = (Excel.Application)System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application");
                 xlApp.ActiveCell.Value2 = data;
-                //THIS CODE WOULD ALLOW THE PROGRAM TO CHANGE CELLS
-                //BUT WAS DETERMINED TO BE UNNECESSARY
 
                 //Change currently selected cell
 
                 Excel.Range activeCell = xlApp.ActiveCell;
                 int column = activeCell.Column;
                 int row = activeCell.Row;
-                if (true/*down.selevted*/)
-                    activeCell = (Excel.Range)xlApp.ActiveSheet.Cells[row + 1, column];
-                if (true/*acrose selected*/)
-                    activeCell = (Excel.Range)xlApp.ActiveSheet.Cells[row, column + 1];
+                int row_offset = Properties.Settings.Default.row_offset;
+                int column_offset = Properties.Settings.Default.column_offset;
+                activeCell = (Excel.Range)xlApp.ActiveSheet.Cells[row + row_offset, column + column_offset];
                 activeCell.Select();
 
             }

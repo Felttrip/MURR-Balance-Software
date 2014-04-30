@@ -23,12 +23,15 @@ namespace WindowsFormsApplication2.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Brate {
             get {
                 return ((string)(this["Brate"]));
+            }
+            set {
+                this["Brate"] = value;
             }
         }
         
@@ -125,6 +128,30 @@ namespace WindowsFormsApplication2.Properties {
             }
             set {
                 this["stop_bits"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int row_offset {
+            get {
+                return ((int)(this["row_offset"]));
+            }
+            set {
+                this["row_offset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int column_offset {
+            get {
+                return ((int)(this["column_offset"]));
+            }
+            set {
+                this["column_offset"] = value;
             }
         }
     }

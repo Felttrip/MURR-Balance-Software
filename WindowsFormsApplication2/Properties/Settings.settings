@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WindowsFormsApplication2.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Brate" Type="System.String" Scope="Application">
+    <Setting Name="Brate" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="baudRate" Type="System.String" Scope="User">
@@ -28,6 +28,12 @@
     </Setting>
     <Setting Name="stop_bits" Type="System.IO.Ports.StopBits" Scope="User">
       <Value Profile="(Default)">One</Value>
+    </Setting>
+    <Setting Name="row_offset" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="column_offset" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

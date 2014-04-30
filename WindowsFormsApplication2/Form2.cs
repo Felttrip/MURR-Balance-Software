@@ -40,9 +40,8 @@ namespace WindowsFormsApplication2
             dataBitsTxtbox.Text = Properties.Settings.Default.data_bits.ToString();
             stopBitsCmbBox.Text = Properties.Settings.Default.stop_bits.ToString();
             parityCmbBox.Text = Properties.Settings.Default.parity.ToString();
-
-          
-           
+            row_offset_drop.Value = Properties.Settings.Default.row_offset;
+            column_offset_drop.Value = Properties.Settings.Default.column_offset; 
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -119,6 +118,8 @@ namespace WindowsFormsApplication2
             Properties.Settings.Default.data_bits = customDataBits;
             Properties.Settings.Default.stop_bits = customStopBits;
             Properties.Settings.Default.parity = customParity;
+            Properties.Settings.Default.row_offset = (int)row_offset_drop.Value;
+            Properties.Settings.Default.column_offset = (int)column_offset_drop.Value;
             Properties.Settings.Default.Save();
         }
 
