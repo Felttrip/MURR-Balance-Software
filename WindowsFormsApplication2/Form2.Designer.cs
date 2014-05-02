@@ -38,18 +38,18 @@
             this.label5 = new System.Windows.Forms.Label();
             this.portNameCmbBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.row_offset_drop = new System.Windows.Forms.NumericUpDown();
-            this.column_offset_drop = new System.Windows.Forms.NumericUpDown();
             this.baudRateTxtbox = new System.Windows.Forms.TextBox();
             this.stopBitsCmbBox = new System.Windows.Forms.ComboBox();
             this.dataBitsTxtbox = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.column_offset_drop = new System.Windows.Forms.NumericUpDown();
+            this.row_offset_drop = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.row_offset_drop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.column_offset_drop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.row_offset_drop)).BeginInit();
             this.SuspendLayout();
             // 
             // parityCmbBox
@@ -158,51 +158,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Serial Port Settings";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.column_offset_drop);
-            this.groupBox2.Controls.Add(this.row_offset_drop);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(12, 187);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(189, 78);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Excel Offset";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Row";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 47);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Column";
-            // 
-            // row_offset_drop
-            // 
-            this.row_offset_drop.Location = new System.Drawing.Point(70, 19);
-            this.row_offset_drop.Name = "row_offset_drop";
-            this.row_offset_drop.Size = new System.Drawing.Size(100, 20);
-            this.row_offset_drop.TabIndex = 2;
-            // 
-            // column_offset_drop
-            // 
-            this.column_offset_drop.Location = new System.Drawing.Point(70, 45);
-            this.column_offset_drop.Name = "column_offset_drop";
-            this.column_offset_drop.Size = new System.Drawing.Size(100, 20);
-            this.column_offset_drop.TabIndex = 3;
-            // 
             // baudRateTxtbox
             // 
             this.baudRateTxtbox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::WindowsFormsApplication2.Properties.Settings.Default, "baudRate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -235,6 +190,61 @@
             this.dataBitsTxtbox.TabIndex = 2;
             this.dataBitsTxtbox.Text = global::WindowsFormsApplication2.Properties.Settings.Default.DataBits;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.column_offset_drop);
+            this.groupBox2.Controls.Add(this.row_offset_drop);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(12, 187);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(189, 78);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Excel Offset";
+            // 
+            // column_offset_drop
+            // 
+            this.column_offset_drop.Location = new System.Drawing.Point(70, 45);
+            this.column_offset_drop.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.column_offset_drop.Name = "column_offset_drop";
+            this.column_offset_drop.Size = new System.Drawing.Size(100, 20);
+            this.column_offset_drop.TabIndex = 3;
+            // 
+            // row_offset_drop
+            // 
+            this.row_offset_drop.Location = new System.Drawing.Point(70, 19);
+            this.row_offset_drop.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.row_offset_drop.Name = "row_offset_drop";
+            this.row_offset_drop.Size = new System.Drawing.Size(100, 20);
+            this.row_offset_drop.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 47);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Column";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Row";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,8 +260,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.row_offset_drop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.column_offset_drop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.row_offset_drop)).EndInit();
             this.ResumeLayout(false);
 
         }

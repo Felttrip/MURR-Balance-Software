@@ -253,7 +253,7 @@ namespace WindowsFormsApplication2
             pDoc.DocumentName = "Printing Document";
             pDoc.PrintPage += delegate(object sender1, PrintPageEventArgs e1)
             {
-                e1.Graphics.DrawString(richTextBox1.Text, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 50, pDoc.DefaultPageSettings.PrintableArea.Width, pDoc.DefaultPageSettings.PrintableArea.Height));
+                e1.Graphics.DrawString("Printed on: " + DateTime.Now.ToLongDateString() + "\r\n" + richTextBox1.Text, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 50, pDoc.DefaultPageSettings.PrintableArea.Width, pDoc.DefaultPageSettings.PrintableArea.Height));
 
             };
             if (pDialog.ShowDialog() == DialogResult.OK)
