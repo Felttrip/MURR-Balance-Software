@@ -138,7 +138,6 @@
             this.portNameCmbBox.Name = "portNameCmbBox";
             this.portNameCmbBox.Size = new System.Drawing.Size(100, 21);
             this.portNameCmbBox.TabIndex = 12;
-            this.portNameCmbBox.SelectedIndexChanged += new System.EventHandler(this.portNameCmbBox_SelectedIndexChanged);
             // 
             // groupBox1
             // 

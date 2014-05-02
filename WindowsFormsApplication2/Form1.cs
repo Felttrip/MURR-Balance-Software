@@ -12,6 +12,7 @@ using System.Threading;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
 using Microsoft.VisualBasic;
+using System.Drawing.Printing;
 
 
 namespace WindowsFormsApplication2
@@ -209,7 +210,6 @@ namespace WindowsFormsApplication2
         }
 
 
-
         //Connecting to COM function
         //sets all of the values to start a COM port connection
         private void connectToCOM()
@@ -241,6 +241,23 @@ namespace WindowsFormsApplication2
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             customForm.Show();
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintDialog pDialog = new PrintDialog();
+            PrintDocument pDoc = new PrintDocument();
+            pDialog.AllowPrintToFile = true;
+            pDialog.AllowSelection = true;
+            pDialog.AllowSomePages = true;
+            pDoc.DocumentName = "Printing Document";
+            pDoc.PrintPage += delegate(object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(richTextBox1.Text, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 50, pDoc.DefaultPageSettings.PrintableArea.Width, pDoc.DefaultPageSettings.PrintableArea.Height));
+
+            };
+            if (pDialog.ShowDialog() == DialogResult.OK)
+                pDoc.Print();
         }
         
 

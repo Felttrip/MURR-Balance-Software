@@ -123,10 +123,6 @@ namespace WindowsFormsApplication2
             Properties.Settings.Default.Save();
         }
 
-        private void portNameCmbBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
 
     }
 }
