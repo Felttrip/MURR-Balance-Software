@@ -23,25 +23,34 @@ namespace WindowsFormsApplication2
         {
 
             InitializeComponent();
-            string[] ports = SerialPort.GetPortNames();
-            int i = 0;
-            int index=0;
-            foreach (string port in ports)
+            try
             {
-                portNameCmbBox.Items.Add(port);
-                if(port == Properties.Settings.Default.port_name)
-                {
-                    index = i;
-                }
-                i++;
+                string[] ports = SerialPort.GetPortNames();
+
+                int i = 0;
+                int index = 0;
+                
+                    foreach (string port in ports)
+                    {
+                        portNameCmbBox.Items.Add(port);
+                        if (port == Properties.Settings.Default.port_name)
+                        {
+                            index = i;
+                        }
+                        i++;
+                    }
+                portNameCmbBox.SelectedIndex = index;
+                baudRateTxtbox.Text = Properties.Settings.Default.baud_rate.ToString();
+                dataBitsTxtbox.Text = Properties.Settings.Default.data_bits.ToString();
+                stopBitsCmbBox.Text = Properties.Settings.Default.stop_bits.ToString();
+                parityCmbBox.Text = Properties.Settings.Default.parity.ToString();
+                row_offset_drop.Value = Properties.Settings.Default.row_offset;
+                column_offset_drop.Value = Properties.Settings.Default.column_offset;
             }
-            portNameCmbBox.SelectedIndex = index;
-            baudRateTxtbox.Text = Properties.Settings.Default.baud_rate.ToString();
-            dataBitsTxtbox.Text = Properties.Settings.Default.data_bits.ToString();
-            stopBitsCmbBox.Text = Properties.Settings.Default.stop_bits.ToString();
-            parityCmbBox.Text = Properties.Settings.Default.parity.ToString();
-            row_offset_drop.Value = Properties.Settings.Default.row_offset;
-            column_offset_drop.Value = Properties.Settings.Default.column_offset; 
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                MessageBox.Show("Error no serial ports detected");
+            }
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -122,6 +131,8 @@ namespace WindowsFormsApplication2
             Properties.Settings.Default.column_offset = (int)column_offset_drop.Value;
             Properties.Settings.Default.Save();
         }
+
+
 
 
     }
