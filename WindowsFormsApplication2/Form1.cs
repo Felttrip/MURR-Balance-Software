@@ -28,6 +28,11 @@ namespace WindowsFormsApplication2
         Excel.Workbook xlwkbook;
         Excel.Worksheet xlsheet;
         Excel.Application xlApp;
+
+        private System.ComponentModel.Container components;
+        private System.Windows.Forms.Button printButton;
+        private Font printFont;
+        private StringReader stringToPrint;
        
         public Form1()
         {
@@ -47,7 +52,7 @@ namespace WindowsFormsApplication2
         private void runBtn_Click(object sender, EventArgs e)
         {
             //Start up serial port connection
-            
+
             if (serialPort1.IsOpen)
             {
                 serialPort1.Close();
@@ -243,9 +248,31 @@ namespace WindowsFormsApplication2
             customForm.Show();
         }
 
+        //Printing
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrintDialog pDialog = new PrintDialog();
+
+            try
+            {
+                stringToPrint = new StringReader("Printed on: " + DateTime.Now.ToLongDateString() + "\r\n" + richTextBox1.Text);
+                try
+                {
+                    printFont = new Font("Arial", 10);
+                    PrintDocument pd = new PrintDocument();
+                    pd.PrintPage += new PrintPageEventHandler
+                       (this.pd_PrintPage);
+                    pd.Print();
+                }
+                finally
+                {
+                    stringToPrint.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            /*PrintDialog pDialog = new PrintDialog();
             PrintDocument pDoc = new PrintDocument();
             pDialog.AllowPrintToFile = true;
             pDialog.AllowSelection = true;
@@ -257,9 +284,41 @@ namespace WindowsFormsApplication2
 
             };
             if (pDialog.ShowDialog() == DialogResult.OK)
-                pDoc.Print();
+                pDoc.Print();*/
         }
-        
+
+
+        // The PrintPage event is raised for each page to be printed. 
+        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            float linesPerPage = 0;
+            float yPos = 0;
+            int count = 0;
+            float leftMargin = ev.MarginBounds.Left;
+            float topMargin = ev.MarginBounds.Top;
+            string line = null;
+
+            // Calculate the number of lines per page.
+            linesPerPage = ev.MarginBounds.Height /
+               printFont.GetHeight(ev.Graphics);
+
+            // Print each line of the file. 
+            while (count < linesPerPage &&
+               ((line = stringToPrint.ReadLine()) != null))
+            {
+                yPos = topMargin + (count *
+                   printFont.GetHeight(ev.Graphics));
+                ev.Graphics.DrawString(line, printFont, Brushes.Black,
+                   leftMargin, yPos, new StringFormat());
+                count++;
+            }
+
+            // If more lines exist, print another page. 
+            if (line != null)
+                ev.HasMorePages = true;
+            else
+                ev.HasMorePages = false;
+        }   
 
     }
 }     

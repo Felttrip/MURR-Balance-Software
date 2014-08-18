@@ -3988,7 +3988,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{D0FCDCEA-D3C8-4BE6-83B7-47B466BDCF75}</td></row>
 		<row><td>ISUSSignature</td><td>{66392CF4-2594-4F75-8074-9ED56035AB3E}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday,viewProject,viewUpgradePaths,viewRelease,viewDesignPatches,viewUI</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday,viewProject,viewUpgradePaths,viewRelease,viewDesignPatches,viewUI,viewRealSetupDesign</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4362,7 +4362,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKAPPPOOLS</td><td>##IDS_PROGMSG_IIS_ROLLBACKAPPPOOLS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
-		<row><td>ProductCode</td><td>{72E2DFB2-90CF-4CA5-B430-71B860D57824}</td><td/></row>
+		<row><td>ProductCode</td><td>{35209099-8024-437A-8239-0B4E099E1B29}</td><td/></row>
 		<row><td>ProductName</td><td>Murr Balance Software</td><td/></row>
 		<row><td>ProductVersion</td><td>1.00.0003</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>

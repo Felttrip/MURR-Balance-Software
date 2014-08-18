@@ -49,7 +49,7 @@ namespace WindowsFormsApplication2
             }
             catch (System.ArgumentOutOfRangeException e)
             {
-                MessageBox.Show("Error no serial ports detected");
+                MessageBox.Show("No serial ports have been detected in this machine.\n Because this application requires a serial port to communicate with a lab balance it will be unable to function.\n If there are serial ports on the machine and this message is still being displayed, please ensure that the serial ports are active and working.", "Serial Port Error");
             }
         }
 
